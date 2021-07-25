@@ -9,9 +9,6 @@
 처음에는 세미콜론을 의식적으로 사용하자
 > 개발자들 사이에서 세미콜론을 쓰지말자 그냥 명시적으로 사용하자 의견 논란이 있음
 
-### console.log
-파이썬의 print 함수로 생각하면 된다.
-
 ### 코멘트 - 주석처리
 '//' 코드에 인식하지 안도록 하는 것 - 줄바꿈을 하면 풀리기 때문에
 '/*   * /' 별과 별 사이에 코멘트를 적으면 줄바꿈이 일어나더라도 괜찮다.
@@ -183,189 +180,7 @@ for in 반복문이 실행될 때 따로 정해진 순서 없이 객체에 추�
 
 splice는 전달된 값 이후의 모든 값을 지우게 된다.
 members.splice(1)이라고 하면 ['가'] 출력이 된다.
-그래서 splice('삭제를# node
-### 자바스크립트 런타임
-특정 언어로 마든 프로그램들을 실행 할 수 있는 환경을 의미합니다.
-### 이벤트 기반
-이벤트가 발생했을 때 미리 지정해둔 작업을 수행하는 방식을 의미합니다.
-특정 이벤트가 발생할 때 무엇을 할지 미리 등록을 해두어야 합니다. 이를 **이벤트 리스너에 콜백 함수를 등록한다** 라고 표현합니다.
-
-노드 역시 이벤트 기반으로 동작하므로 이벤트가 발생하면 이벤트 리스너에 등록해둔 콜백함수를 호출 합니다. 이벤트를 다 처리하면 노드는 다음 이벤트 발생 할때 까지 대기 합니다.
-
-----
-### 이벤트 루프
-이벤트 발생 시 호출할 콜백 함수들을 관리하고, 호출된 콜백 함수의 실행 순서를 결정하는 역활을 담당합니다. 노드가 종료될 때까지 이벤트 처리를 위한 작업을 반복하므로 루프(loop)라고 합니다.
-### 백그라운드
-이벤트 리스너 들이 대기하는 공간, 여러작업이 동시에 실행 가능
-### 태스크 큐
-이벤트 발생후, 백그라운드에서는 태스크 큐로 타이머나 이벤트 리스너의 콜백함수를 보냄
-
----
-
-자바스크립트 코드는 동시에 실행이 될 수 없다. 하지만 자바스크립트 상에서 돌아가는 것이 아닌 I/O 작업 같은 것은 동시에 처리될 수 있습니다.
-
-I = Input
-O = Output
-
-파일 시스템 접근 - 논 블로킹
->논 블로킹
-이전 작업이 완료될 때까지 대기하지 않고 다음 작업을 수행함
-블로킹
-이전 작업이 끝나야만 다음 작업을 수행
-
-### 싱글 스레드
-노드는 싱글스레드
-노드를 실행하면 먼저 프로세스가 하나 생성이 됩니다. 그리고 그 프로세스에서 내부적으로 여러개의 스레드를 생성하는데 사용자는 그 중 한 개의 스레드만을 제어할 수 있습니다.
-
-#### 노드에서의 멀티 스레드 vs 멀티 프로세싱
-식당을 예로 들게 되면 한명의 점원이 주방에 주문을 받고 주문을 넣고 음식이 나오는 순서대로 가져다 줍니다. 노드는 이런 방식을 사용합니다. 이걸 싱글스레드 논 블로킹 모델이라고 할 수있습니다. 하지만 그 점원이 쓰러지게 되면 큰 문제가 생기게 됩니다. 요리를 하는데 오래걸린다(cpu를 많이 쓰이는 작업)면 버거울 수 있습니다.
-
-멀티 스레드는 고객 한명당 점원 한 명씩을 할당해서 운영하는 것입니다. 얼핏 보면 이게 더 좋아보일 수도 있으나 손님의 수가 늘어나면 점원의 수가 늘어나게 되고, 손님 수가 줄어 들었을 때 노는 점원이 노는 점원이 있을 것이고 비용의 증가가 일어나게 됩니다.
-
-|멀티 스레딩|멀티 프로세싱|
-|--------|-----------|
-|하나의 프로세스안에서 여러개의 스레드 사용|여러개의 프로세스 사용|
-|CPU작업이 많을 때 사용|I/O의 요청이 많을 때 사용|
-|프로그래밍이 어려움|프로그래밍이 비교적 쉬움|
-
-## 노드.js
-- 서버에는 기본적으로 I/O의 요청이 많이 발생하므로, I/O 처리를 잘하는 노드를 서버로 사용하면 좋습니다. 
-- 노드는 CPU 부하가 큰 작업에는 적합하지 않습니다. CPU연산을 많이 요구하면 스레드 하나가 혼자서 감당하기 어렵습니다.
-- 개수는 많지만 크기는 작은 데이터를 실시간으로 주고받는데 적합합니다.
-- 이미지나 비디오 처리, 혹은 대규모 데이터 처리처럼 CPU를 많이 사용하는 작업을 위한 서버로는 권장하지 않습니다. AWSlambda, google cloud functions 같은 서비스에서 노드로 CPU를 많이 사용하는 작업을 처리하는 것을 지원하므로 고려
-- 싱글 스레드 방식으로 서버를 운영할때는 하나뿐인 스레드가 에러로 인해 멈추지 않도록 잘 관리해야 합니다.
-
-## REPL(Read, Eval, Print, Loop)
-입력한 코드를 읽고, 해석하고, 결과물을 반환하고, 종료할때 까지 반복한다. -> django shell 느낌
-
->#### 모듈
-특정한 기능을 하는 함수나 변수들의 집합, 모듈은 자체로도 하나의 프로그램이면서 다른 프로그램의 부품으로도 사용할 수 있다.
-
-### console
-보통 디버깅을 위해 사용합니다. 변수에 값이 제대로 들어 있는지, 에러발생 시 에러 내용을 콘솔에 표현하기 위해서, 코드 실행 시간을 알아보려고 할 때도 사용합니다.
-
-console.time: console.timeEnd과 대응되어 같은 레이블을 가진 time과 timeEnd 사이의 시간을 측정합니다.
-
-console.log('내용'): 평범한 로그를 콘솔에 표시합니다. console.log(내용, 내용)처럼 여러 내요을 동시에 표현할 수 있습니다.
-
-console.error(에러 내용): 에러를 콘솔에 표시합니다.
-console.table(배열): 배열의 요소로 객체 리터럴에 넣으면, 객체의 속성들이 테이블 형식으로 표현됩니다. 아래 결과를 확인해 보세요
-
-console.dir(객체, 옵션): 객체를 콘솔에 표시할 때 사용합니다. 첫 번째 인수로 표시할 객체를 넣고, 두 번째 인수로 옵션을 넣습니다. 옵션의 colors를 true로 하면 콘솔에 색이 추가되어 
-채보기가 한결 편해 집니다. depth는 객체 안의 객체를 몇 단계 까지 보여줄지를 결정합니다. 기본값은 2입니다.
-
-console.trace(레이블): 에러가 어디서 발생했는지 추적할 수 있게 합니다. 일반적으로 에러 발생 시 에러 위치를 알려주므로 자주 사용하지는 않지만, 위치가 나오지 않는 다면 사용할 만 합니다.
-
-## this
-```js
-function hello () {
-  console.log(this);
-  console.log(this === global);
-}
-
-hello();
-
-
-class A {
-  constructor(num) {
-     this.num = num;
-  }
-  memberFunction() {
-    console.log('------class--------------');
-    console.log(this);
-    console.log(this === global);
-  }
-}
-
-const a = new A(1);
-a.memberFunction();
-```
-hello 함수의 this는 global을 가리키고 있으며
-클래스의 this는 클래스 안에 있는 1을 가리키고 있습니다.
-
-
-## module, exports, require
-처음에 모듈을 작성할 때
-```js
-const odd = '홀수입니다.'
-const even = '짝수입니다.'
-
-module.exports = {
- odd,
- even
-}
-```
-
-이런식으로 모듈을 만들어 주었습니다.
-
-```js
-exports.odd = '홀수입니다.';
-exports.even = '짝수입니다.';
-```
-이렇게 수정해도 사용이 가능합니다.
-
-가능한 이유
-- module.exports와 exports가 같은 객체를 참조하기 때문입니다.
-- module.exports에는 어떤 값이라도 대응이 가능하지만, exports에는 객체처럼 속성명과 속성값만이 대응이 가능하다. 
-module.exports에 함수를 대응하게 되면 exports는 사용이 불가능 하다.
-- module.exports와 exports는 동시에 사용하지 않는 편이 좋다.
-
-console.log(module.exports === exports) 하면 true가 나온다.
-
-
->require와 exports
-require와 exports는 맨 위에 오지 않아도 사용이 가능하다.
-
-```js
-module.exports.getCount = getCount;
-exports = {}
-exports.increase = increase;
-```
-이렇게 되면 module.exports와 exports가 서로 다른 객체가 되어 버린다.
-
-![](https://images.velog.io/images/eagle5424/post/7c021b16-e9c3-404e-86ef-3808f59748cc/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202021-07-22%2010-17-49.png)
-
-그래서 처음과 두번째의 module.exports === exports를 비교 해보면 결과값이 다르게 나오는 것을 확인 할 수 있습니다.
-
-이 부분은 예전 버전이고 ES6이후부터는 자바스크립트 자체적으로 import 기능을 지원하고 있습니다.
-
-#### 자바스크립트 자체적인 import 방법
-터미널에 **npm init --yes** 를 입력하게 되면 package.json이 생기게 됩니다. 그 폴더에 들어가서 **"type" : "module",**을 입력해줘야 하는데 이는 module을 import 할때 자바스크립트에서 자체적으로 지원해주는 방법을 쓰겠다고 말하는것이다.
-
-그럼 모듈을 import 하는 방법에서도
-```js
-export function increase() {
-  count++;
-}
-```
-export를 이런식으로 해주면 되고
-require 부분에서도
-
-let count = require('./counter')
-
-**import {increase, getCount} from './counter'**
-
-이런식으로 적어주면 된다.
-그리고 기존의
-counter.increase();   -> increase();
-counter.getCount();   -> getCount();
-이렇게 간편하게 적을 수 있다.
-![](https://images.velog.io/images/eagle5424/post/f81777a3-5f45-41d6-80cb-ddc591c93a0d/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202021-07-22%2010-39-01.png)
-
-#### nextTick()
-콜백함수에 어떤 다른 함수가 있더라도 무시하고 taskque 제일 앞부분에 콜백함수를 넣어준다.
-
-#### setTimeout()
-함수가 다실행이 되고 나서 몇 초뒤에 내 콜백 함수를 실행해 달라고 요청하는 것을 의미한다.
-
-## 버퍼와 스트림(Buffer and Stream)
-스트림 : 데이터를 잘게 쪼개서 전송하는 것
-
-파일을 조금씩 읽으면서 전송을 한다.
-
-
-
- 시작할 인덱스', '몇개를 지울것인지','삭제할 자리에 추가할 값')형식으로 사용하면 된다.
+그래서 splice('삭제를 시작할 인덱스', '몇개를 지울것인지','삭제할 자리에 추가할 값')형식으로 사용하면 된다.
 
 사용예시
 배열의 첫 요소를 삭제
@@ -457,10 +272,8 @@ Hoisting이 가능하다. var변수는 함수 스코프를 기준으로 선언�
 기본형 - Number, String, Boolean, Null, Undefined, Symbol(다른값과 비교하지 않은 유일한 값을 만들 때), bigint(엄청 큰 숫자를 다룰 때!)
 참조형 - object
 
-> Symbol - 다른값과 비교하지 않은 유일한 값을 만들때
-![](https://images.velog.io/images/eagle5424/post/0cfc5c55-1ee9-42ea-a692-30b34b65b6dd/image.png)
-
->typeof 함수
+Symbol - 다른값과 비교하지 않은 유일한 값을 만들때
+typeof 함수
 typeof null을 하게 되면 'object'
 typeof 함수; 를 하게 되면 'function'
 
@@ -607,21 +420,9 @@ function printRank(first, second, ...others ){
 printRank('Phil', 'Won', 'Emma', 'Min', 'Luke');
 ```
 
-이런식이면
-![](https://images.velog.io/images/eagle5424/post/ec5f86c4-312c-48f1-9657-9f0e392f3d09/image.png)
-이렇게 arguments를 splice 해서 사용이 가능해 진다.
-
 실제로 Rest Parameter가 더욱 강력하게 사용되어지기 때문에 사용하는 것을 권장한다.
 
 ## this
-함수를 호출하는 객체를 가리키는 객체
-![](https://images.velog.io/images/eagle5424/post/0c03ce67-af3a-4c64-aaba-bf35efb6f544/image.png)
-
-이런식으로 제대로 작동이 되지 않는다 그래서 fullName 함수에서 user를 this로 바꿔주게 되면
-![](https://images.velog.io/images/eagle5424/post/74574f6e-88cf-44fa-8154-68747655321e/image.png)
-
-이런 식으로 바뀌게 된다.
-
 만약 그냥 console.log에 this 객체를 넣게 되면 window 객체를 사용한 것으로 나오게 된다. 
 
 일반함수와 arrow function의 this함수를 다루는게 다르다. 
@@ -646,7 +447,6 @@ console.log() 콘솔에 argument를 출력하는 동작도 하지만, undefined�
 
 자바스크립트에서 특별한 경우를 제외한다면 일반적으로 표현식인 문장은 세미콜론으로, 표현식이 아닌 문장은 문장 자체의 코드 블로으로 그 문장의 범위가 구분이 되어진다.
 
-# Node
 # node
 ### 자바스크립트 런타임
 특정 언어로 마든 프로그램들을 실행 할 수 있는 환경을 의미합니다.
@@ -785,8 +585,6 @@ module.exports.getCount = getCount;
 exports = {}
 exports.increase = increase;
 ```
-이렇게 되면 module.exports와 exports가 서로 다른 객체가 되어 버린다.
-![](https://images.velog.io/images/eagle5424/post/7c021b16-e9c3-404e-86ef-3808f59748cc/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202021-07-22%2010-17-49.png)
 
 그래서 처음과 두번째의 module.exports === exports를 비교 해보면 결과값이 다르게 나오는 것을 확인 할 수 있습니다.
 
@@ -812,8 +610,6 @@ let count = require('./counter')
 그리고 기존의
 counter.increase();   -> increase();
 counter.getCount();   -> getCount();
-이렇게 간편하게 적을 수 있다.
-![](https://images.velog.io/images/eagle5424/post/f81777a3-5f45-41d6-80cb-ddc591c93a0d/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202021-07-22%2010-39-01.png)
 
 #### nextTick()
 콜백함수에 어떤 다른 함수가 있더라도 무시하고 taskque 제일 앞부분에 콜백함수를 넣어준다.
