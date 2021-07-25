@@ -364,6 +364,7 @@ const add2 = (x,y) => {
 const getCodeit = () => {name : 'Condeit'}
 ```
 3번 처럼 사용하게 되면 중괄호가 함수 선언시에 사용되어지는 중괄호 인줄 알고 오류가 난다. 그래서 그 옆을 소괄호로 묶어주게 되면 오류가 발생하지 않는다.
+
 ![](https://images.velog.io/images/eagle5424/post/9ec7f27d-6269-4970-a76c-11fbbee14257/image.png)
 
 이런식으로 function을 선언하지 않더라도 **=>**를 사용하면 function을 만들 수 있다.
@@ -372,6 +373,7 @@ const add3 = (x,y) => x+y;
 ```
 
 화살표 함수 내부에 return만 있는 경우에는 이런식으로 써도 사용이 가능한다.
+
 ![](https://images.velog.io/images/eagle5424/post/3a4e38dc-b22c-47c6-917e-5b9e706ff15e/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202021-07-20%2017-50-09.png)
 
 arrow function에는 arguments 객체가 없기 때문에 arguments를 사용하는 함수는 arrow function으로 사용하기 어렵다.
