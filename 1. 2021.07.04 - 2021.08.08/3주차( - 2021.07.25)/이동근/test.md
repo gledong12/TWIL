@@ -322,6 +322,7 @@ exports = {}
 exports.increase = increase;
 ```
 이렇게 되면 module.exports와 exports가 서로 다른 객체가 되어 버린다.
+
 ![](https://images.velog.io/images/eagle5424/post/7c021b16-e9c3-404e-86ef-3808f59748cc/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202021-07-22%2010-17-49.png)
 
 그래서 처음과 두번째의 module.exports === exports를 비교 해보면 결과값이 다르게 나오는 것을 확인 할 수 있습니다.
